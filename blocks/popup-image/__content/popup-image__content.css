@@ -1,0 +1,7 @@
+.popup-image__content {
+    height: 80%;
+    
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}

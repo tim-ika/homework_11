@@ -1,0 +1,12 @@
+.user-info__edit{
+    width: 38px;
+    margin: 24px 0 0 0;
+    font-size: 12px;
+}
+
+/* @media screen and (max-width: 980px) {
+    .user-info__edit {
+      position: static;
+      margin-bottom: 40px;
+    }
+  } */
