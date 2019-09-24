@@ -1,4 +1,4 @@
-import {templates} from './formTemplates.js';
+import {templates} from './popupTemplates.js';
 
 export class Popup {
     create() {
