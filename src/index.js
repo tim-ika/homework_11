@@ -1,21 +1,31 @@
-import "./style.css";
+import {Api} from "./api.js";
+import {CardList} from "./cardList.js";
+import {Popup} from "./popup.js";
+import {Validator} from "./validator.js";
+import {User} from "./user.js";
 
-import {CardList} from "./cardList.js"
-import {Popup} from "./popup.js"
-import {Validator} from "./validator.js"
-import {User} from "./user.js"
-import {Api} from "./api.js"
 
-console.log('Hello!');
+import "./blocks/button/button.css";
+import "./blocks/counter/counter.css";
+import "./blocks/error-message/error-message.css";
+import "./blocks/header/header.css";
+import "./blocks/input-container/input-container.css";
+import "./blocks/logo/logo.css";
+import "./blocks/place-card/place-card.css";
+import "./blocks/places-list/places-list.css";
+import "./blocks/popup/popup.css";
+import "./blocks/popup-edit/popup-edit.css";
+import "./blocks/popup-image/popup-image.css";
+import "./blocks/profile/profile.css";
+import "./blocks/root/root.css";
+import "./blocks/user-info/user-info.css";
+import "./vendor/fonts.css";
+import "./vendor/normalize.css";
+
 
 const root = document.querySelector('.root');
-
-const placesContainer = document.querySelector('.places-list');
-
-const placesList = new CardList(placesContainer);
-console.log(placesList);
+const placesList = new CardList(document.querySelector('.places-list'));
 const validator = new Validator();
-
 const user = new User();
 
 const config = {
@@ -25,9 +35,7 @@ const config = {
       'Content-Type': 'application/json'
     }
   }
-  const api = new Api(config);
-
-
+const api = new Api(config);
 
 api.getUserData()
     .then(userData => user.create(userData))

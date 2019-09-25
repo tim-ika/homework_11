@@ -40,7 +40,7 @@ export class Card {
         if(this.like) {
             cardLikeButton.classList.add('place-card__like-icon_liked');
         }
-        if(this.owner._id == this.myId) {
+        if(this.owner._id == myId) {
             cardDeleteButton.style.display = 'block';
         }
         card.appendChild(cardImage);

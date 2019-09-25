@@ -1,7 +1,7 @@
 export const templates = {
         authorFormTemplate: `
         <div class="popup__content">
-            <img src="./images/close.svg" alt="" class="popup__close">
+            <img src="/src/images/close.svg" alt="" class="popup__close">
             <h3 class="popup__title">Редактировать профиль</h3>
             <form class="popup__form" name="edit">
                 <div class="input-container">
@@ -18,7 +18,7 @@ export const templates = {
         `,
         avatarFormTemplate: `
         <div class="popup__content">
-            <img src="./images/close.svg" alt="" class="popup__close">
+            <img src="/src/images/close.svg" alt="" class="popup__close">
             <h3 class="popup__title">Обновить аватар</h3>
             <form class="popup__form" name="avatar">
                 <div class="input-container">
@@ -31,7 +31,7 @@ export const templates = {
         `,
         placeFormTemplate: `
         <div class="popup__content">
-        <img src="./images/close.svg" alt="" class="popup__close">  
+        <img src="/src/images/close.svg" alt="" class="popup__close">  
         <h3 class="popup__title">Новое место</h3>
         <form class="popup__form" name="new">
             <div class="input-container">
@@ -49,7 +49,7 @@ export const templates = {
         `,
         imageTemplate: `
         <div class="popup-image__content">
-            <img src="./images/close.svg" alt="" class="popup-image__close">
+            <img src="/src/images/close.svg" alt="" class="popup-image__close">
          </div>
         `
     }
