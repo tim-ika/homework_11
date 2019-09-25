@@ -1,8 +1,9 @@
-import {Api} from "./api.js";
-import {CardList} from "./cardList.js";
-import {Popup} from "./popup.js";
-import {Validator} from "./validator.js";
-import {User} from "./user.js";
+import {Api} from "./vendor/api.js";
+import {PlaceList} from "./blocks/places-list/placeList.js";
+import {Popup} from "./blocks/popup/popup.js";
+import {Validator} from "./vendor/validator.js";
+import {User} from "./blocks/user-info/user.js";
+import {PlaceCard} from "./blocks/place-card/placeCard.js";
 
 
 import "./blocks/button/button.css";
@@ -24,7 +25,7 @@ import "./vendor/normalize.css";
 
 
 const root = document.querySelector('.root');
-const placesList = new CardList(document.querySelector('.places-list'));
+const placesList = new PlaceList(document.querySelector('.places-list'));
 const validator = new Validator();
 const user = new User();
 
@@ -42,13 +43,26 @@ api.getUserData()
     .catch(err => console.log(err));
 
 api.getInitialCards()
-    .then(cards => placesList.loadInitialCards(cards))
+    .then(cards => {
+        cards.forEach((card) => { 
+            placesList.addCard(new PlaceCard(card));
+        });
+    })
     .catch(err => console.log(err));
 
 root.addEventListener('click', function (event) {
     if(event.target.closest('.user-info')) {
         const popup = new Popup();
         popup.show(event, user);
+    }
+
+    if(event.target.closest('.place-card__image')) {
+        const popup = new Popup();
+        
+        const place = event.target.closest('.place-card');
+        const item = placesList.list.find(item => item.id == place.id);
+        
+        popup.show(event, item);
     }
 
     if(event.target.classList.contains('place-card__delete-icon')) {
@@ -125,7 +139,8 @@ root.addEventListener('submit', (event) => {
         const { name, link } = form.elements;
         api.postNewCard(name.value, link.value)
             .then((card) => { 
-                placesList.addCard(card);
+                const place = new PlaceCard(card);
+                placesList.addCard(place);
                 popup.remove(); 
             })
             .catch(err => console.log(err));

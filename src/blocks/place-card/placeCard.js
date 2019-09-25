@@ -1,8 +1,6 @@
-import {Popup} from  './popup.js';
-
 const myId = '2eb42d1f43b254fd8a76e373';
 
-export class Card {
+export class PlaceCard {
     constructor(card) {
         this.name = card.name;
         this.link = card.link;
@@ -59,18 +57,9 @@ export class Card {
         if (targetCL.contains('place-card__delete-icon')) {
             this.delete();
         }
-
-        if (targetCL.contains('place-card__image')) {
-            this.openInPopup(event);
-        }
     }
 
     delete() {
         this.placeCardElement.remove();
-    }
-
-    openInPopup(event) {
-        const popup = new Popup();
-        popup.show(event, this);
     }
 }
