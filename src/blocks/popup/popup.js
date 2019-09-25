@@ -41,6 +41,7 @@ export class Popup {
             const popupImageContent = this.popupElement.querySelector('.popup-image__content');
 
             img.classList.add('popup-image__image');
+            console.log(object);
             img.src = object.link;
 
             popupImageContent.appendChild(img);
