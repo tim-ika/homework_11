@@ -1,5 +1,7 @@
 const myId = '2eb42d1f43b254fd8a76e373';
 
+
+
 export class PlaceCard {
     constructor(card) {
         this.name = card.name;

@@ -15,13 +15,15 @@ module.exports = {
         filename: '[name].[chunkhash].js'
     },
     module: {
-        rules: [{
+        rules: [
+            {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader"
                 }
             },
+            
             {
                 test: /\.css$/i,
                 use: [
@@ -31,25 +33,27 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(gif|png|jpe?g|svg)$/i,
+                test: /\.(png|jpg|gif|ico|svg)$/,
                 use: [
-                    'file-loader',
-                    {
-                        loader: 'image-webpack-loader',
-                        options: {},
-                    },
+                     'file-loader?name=[name].[ext]', // указали папку, куда складывать изображения
+                     {
+                         loader: 'image-webpack-loader',
+                         options: { }
+                     },
                 ],
-            },
+                },
             {
                 test: /\.(eot|ttf|woff|woff2)$/,
-                loader: 'file-loader?name=./vendor/[name].[ext]'
+                loader: 'file-loader',
             }
-
         ]
     },
     plugins: [
         new MiniCssExtractPlugin({ // 
             filename: 'style.[contenthash].css',
+        }),
+        new webpack.DefinePlugin({
+            'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
         }),
         new HtmlWebpackPlugin({
             inject: false,
@@ -65,9 +69,6 @@ module.exports = {
             },
             canPrint: true
         }),
-        new WebpackMd5Hash(),
-        new webpack.DefinePlugin({
-            'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-        })
+        new WebpackMd5Hash()
     ]
 };

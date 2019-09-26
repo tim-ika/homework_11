@@ -5,6 +5,9 @@ import {Validator} from "./vendor/validator.js";
 import {User} from "./blocks/user-info/user.js";
 import {PlaceCard} from "./blocks/place-card/placeCard.js";
 
+import likeActive from './images/like-active.svg';
+import likeInActive from './images/like-inactive.svg';
+import deleteIcon from './images/trash-icon.svg'
 
 import "./blocks/button/button.css";
 import "./blocks/counter/counter.css";
