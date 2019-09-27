@@ -5,6 +5,9 @@ import {Validator} from "./vendor/validator.js";
 import {User} from "./blocks/user-info/user.js";
 import {PlaceCard} from "./blocks/place-card/placeCard.js";
 
+import likeActive from './images/like-active.svg';
+import likeInActive from './images/like-inactive.svg';
+import deleteIcon from './images/trash-icon.svg'
 
 import "./blocks/button/button.css";
 import "./blocks/counter/counter.css";
@@ -23,14 +26,14 @@ import "./blocks/user-info/user-info.css";
 import "./vendor/fonts.css";
 import "./vendor/normalize.css";
 
-
+const serverUrl = NODE_ENV === 'development' ? 'http://praktikum.tk/cohort2' : 'https://praktikum.tk/cohort2';
 const root = document.querySelector('.root');
 const placesList = new PlaceList(document.querySelector('.places-list'));
 const validator = new Validator();
 const user = new User();
 
 const config = {
-    baseUrl: 'http://95.216.175.5/cohort2',
+    baseUrl: serverUrl,
     headers: {
       authorization: '1f0edc3a-b0f8-423d-a488-e6cdea7d5c7e',
       'Content-Type': 'application/json'
